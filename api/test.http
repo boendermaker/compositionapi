@@ -1,0 +1,67 @@
+GET http://localhost:8080
+
+###
+GET http://localhost:8080/books
+
+###
+GET http://localhost:8080/books/7/
+
+###
+
+POST http://localhost:8080/books
+Content-Type: application/json
+
+{
+  "Title": "Dies ist nur ein Test",
+  "Author": "Behinderter Autor",
+  "Genre": "Bücher für Behinderte Menschen"
+}
+
+###
+GET http://localhost:8080/customers
+
+###
+GET http://localhost:8080/customers/7/
+
+###
+POST http://localhost:8080/customers
+Content-Type: application/json
+
+{
+  "Firstname": "Max",
+  "Lastname": "Mustermann",
+  "Adress": "Musterstraße 1",
+  "City": "Musterstadt",
+  "ZipCode": "12345"
+}
+
+###
+POST http://localhost:8080/customers/personalinfo
+Content-Type: application/json
+
+{
+  "Firstname": "Max",
+  "Lastname": "Mustermann",
+  "Adress": "Musterstraße 1",
+  "City": "Musterstadt",
+  "ZipCode": "12345",
+  "Disabled": true,
+  "Age": 18
+}
+
+###
+
+GET http://localhost:8080/cqrscustomers
+
+###
+
+POST http://localhost:8080/cqrscustomers
+Content-Type: application/json
+
+{
+  "Firstname": "Max",
+  "Lastname": "Mustermann",
+  "Adress": "Musterstraße 1",
+  "City": "Musterstadt",
+  "ZipCode": "12345"
+}
