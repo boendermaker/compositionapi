@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_work\\minimaldemo\\api\\minimaldemo.csproj": {}
+    "C:\\_work\\compositionapi\\api\\minimaldemo.csproj": {}
   },
   "projects": {
-    "C:\\_work\\minimaldemo\\api\\minimaldemo.csproj": {
+    "C:\\_work\\compositionapi\\api\\minimaldemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_work\\minimaldemo\\api\\minimaldemo.csproj",
+        "projectUniqueName": "C:\\_work\\compositionapi\\api\\minimaldemo.csproj",
         "projectName": "minimaldemo",
-        "projectPath": "C:\\_work\\minimaldemo\\api\\minimaldemo.csproj",
-        "packagesPath": "C:\\Users\\d.boendermaker\\.nuget\\packages\\",
-        "outputPath": "C:\\_work\\minimaldemo\\api\\obj\\",
+        "projectPath": "C:\\_work\\compositionapi\\api\\minimaldemo.csproj",
+        "packagesPath": "C:\\Users\\daniel\\.nuget\\packages\\",
+        "outputPath": "C:\\_work\\compositionapi\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\d.boendermaker\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\daniel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.417/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,40 @@
+## Build-Ordner und Binaries
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+
+## Visual Studio spezifisch
+.vs/
+*.user
+*.userosscache
+*.sln.doccache
+
+## Visual Studio Code spezifisch
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## JetBrains Rider spezifisch
+.idea/
+*.sln.iml
+
+## NuGet Pakete
+*.nupkg
+# Lokaler Paket-Cache
+**/packages/*
+!**/packages/build/
+
+## Umgebungsvariablen und Secrets
+.env
+appsettings.Development.json
+UserSecretsId
+
+## Betriebssystem-Dateien
+.DS_Store
+Thumbs.db
+
+## Test-Ergebnisse
+TestResults/
+*.trx

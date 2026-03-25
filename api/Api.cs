@@ -1,56 +1,76 @@
-namespace CompositionApi {
-    public class Api {
+namespace CompositionApi
+{
+    public class Api
+    {
         public WebApplicationBuilder? builderInstance;
         public WebApplication? appInstance;
+        public static IServiceProvider? serviceProvider { get; private set; }
         public MySqlClient mySqlClient = new MySqlClient();
         public MongoDbClient mongoDbClient = new MongoDbClient();
-        public Dictionary<string, object> repositories = new Dictionary<string, object>();
-        public Dictionary<string, object> services = new Dictionary<string, object>();
-        
-        public Api(WebApplicationBuilder builder) {
+
+        public Api(WebApplicationBuilder builder)
+        {
             builderInstance = builder;
-            InitDefaults();
+            serviceProvider = appInstance?.Services;
             InitDependencyInjection();
-            InitApplication();
             InitRepositories();
             InitServices();
+            InitApplication();
+            InitDefaults();
             Run();
         }
 
-        public void InitDependencyInjection() {
+        //########################
+
+        public void InitDependencyInjection()
+        {
+            builderInstance?.Services.AddSingleton<Api>(this);
             //builderInstance.Services.AddSingleton<MySqlClient>();
-            //builderInstance.Services.AddSingleton<BookRepository>();
-            //builderInstance.Services.AddSingleton<BookService>();
             /*builderInstance.Services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new() { Title = "CompositionApi", Version = "v1" });
             });*/
         }
-        public void InitApplication() {
+
+        //########################
+
+        public void InitRepositories()
+        {
+            builderInstance?.Services.AddSingleton<BookRepository>();
+            builderInstance?.Services.AddSingleton<CustomerRepository>();
+        }
+
+        //########################
+
+        public void InitServices()
+        {
+            builderInstance?.Services.AddSingleton<BookService>();
+            builderInstance?.Services.AddSingleton<CustomerService>();
+            builderInstance?.Services.AddSingleton<AddCustomerCommand>();
+            builderInstance?.Services.AddSingleton<AddCustomerPersonalInfoCommand>();
+            builderInstance?.Services.AddSingleton<GetAllCustomersQuery>();
+            builderInstance?.Services.AddSingleton<GetCustomerQuery>();
+        }
+
+        //########################
+        public void InitApplication()
+        {
             appInstance = builderInstance?.Build();
         }
 
-        public void InitRepositories() {
-            repositories.Add("book", new BookRepository(this));
-            repositories.Add("customer", new CustomerRepository(this));
-        }
-
-        public void InitServices() {
-            services.Add("book", new BookService(this));
-            services.Add("customer", new CustomerService(this));
-            //cqrs services
-            services.Add("addCustomerCommand", new AddCustomerCommand(this));
-            services.Add("addCustomerPersonalInfoCommand", new AddCustomerPersonalInfoCommand(this));
-            services.Add("getAllCustomerQuery", new GetAllCustomersQuery(this));
-            services.Add("getCustomerQuery", new GetCustomerQuery(this));
-        }
-
-        public void InitDefaults() {
+        //########################
+        public void InitDefaults()
+        {
             appInstance?.UseExceptionHandler(exceptionHandlerApp => exceptionHandlerApp.Run(async context => await Results.Problem().ExecuteAsync(context)));
         }
 
-        public void Run() {
+        //########################
+
+        public void Run()
+        {
             appInstance?.Run("http://*:8080");
         }
+
+        //########################
 
     }
 

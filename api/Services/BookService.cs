@@ -1,12 +1,12 @@
 namespace CompositionApi {
     public class BookService {
 
-        private Api? api;
-        private BookRepository? bookRepository;
+        private readonly Api api;
+        private readonly BookRepository bookRepository;
 
-        public BookService (Api _api) {
-            api = _api;
-            bookRepository = api?.repositories?["book"] as BookRepository;
+        public BookService(BookRepository bookRepository, Api api) {
+            this.api = api;
+            this.bookRepository = bookRepository;
             Init();
         }
 
